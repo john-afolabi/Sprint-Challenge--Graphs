@@ -26,17 +26,17 @@ player = Player(world.starting_room)
 
 # Fill this out with directions to walk
 # traversal_path = ['n', 'n']
-traversal_path = ['n', 's', 'e', 'w']
+traversal_path = []
 
 inverse_exits = {'n': 's', 's': 'n', 'e': 'w', 'w': 'e'}
 
 vertices = {}
 list_exits = {}
 
-# exits = player.current_room.get_exits()
+exits = player.current_room.get_exits()
 # print(exits)
-for path in traversal_path:
-    list_exits[path] = "?"
+for exit in exits:
+    list_exits[exit] = "?"
 
 vertices[0] = list_exits
 
@@ -113,6 +113,7 @@ while len(room_graph):
     # add edge for the room travelled from
     vertices[to_room][inverse_exits[random_dir]] = from_room
 
+print(traversal_path)
 # TRAVERSAL TEST - DO NOT MODIFY
 visited_rooms = set()
 player.current_room = world.starting_room
